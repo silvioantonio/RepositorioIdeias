@@ -1,6 +1,34 @@
 ﻿@page
 @model RepositorioIdeias.Pages.TodoList.IndexModel
-@{
-}
 
-Entrou no TODO List
+<section class="d-flex p-2 justify-content-evenly gradient">
+    <article class="p-2 m-5 bd-highlight">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post" name="item-da-lista">
+            <div class="mb-3">
+                <label class="form-label" asp-for="Item.Titulo"></label>
+                <input class="form-control" asp-for="Item.Titulo" placeholder="Título do item" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Item.Descricao"></label>
+                <textarea class="form-control" asp-for="Item.Descricao" placeholder="Descrição do item"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="Item.TipoItem"></label>
+                <select class="form-control" asp-for="Item.TipoItem" asp-items="ViewData.Model.tiposItem"></select>
+            </div>
+            <input class="btn btn-info" type="submit" value="Salvar" />
+        </form>
+    </article>
+    @foreach (var item in Model.Itens)
+    {
+        <article class="p-2 m-5 bd-highlight card">
+            <div class="card-body">
+                <h5 class="card-title">@item.Titulo</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.TipoItem</h6>
+                <span class="card-text">@item.DataCriacao</span>
+                <p class="card-text">@item.Descricao</p>
+            </div>
+        </article>
+    }
+</section>

@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RepositorioIdeias.Repository.TodoList;
+using RepositorioIdeias.Service.TodoList;
 
 namespace RepositorioIdeias
 {
@@ -24,6 +26,8 @@ namespace RepositorioIdeias
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddTransient<IItemService, ItemService>();
+            services.AddTransient<IItemRepository, ItemRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -41,6 +45,7 @@ namespace RepositorioIdeias
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseMvc();
+
         }
     }
 }
