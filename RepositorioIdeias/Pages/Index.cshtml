@@ -1,0 +1,18 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<section class="d-flex justify-content-evenly gradient">
+    <article class="m-5 bd-highlight">
+        @*<img src="images/todo-list-image.jpg" alt="imagem todo list">*@
+        <a asp-page="TodoList/Index">TODO List</a>
+    </article>
+    <article class="m-5 bd-highlight">
+        @*<img src="images/empty-image.jpg" alt="imagem empty space">*@
+    </article>
+    <article class="m-5 bd-highlight">
+        @*<img src="images/empty-image.jpg" alt="imagem empty space">*@
+    </article>
+</section>
